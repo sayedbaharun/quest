@@ -972,33 +972,118 @@
     setupOtherToggle('goal_other', 'goalOther');
     setupSelectToggle('confidentiality', 'confidentialityDetail', 'Yes');
 
+    // ── Neon DB Config ──
+    const NEON_HOST = 'ep-solitary-darkness-aku60uzq-pooler.c-3.us-west-2.aws.neon.tech';
+    const NEON_DB = 'neondb';
+    const NEON_USER = 'quest_writer';
+    const NEON_PASS = 'quest_wr1t3r_2026';
+
+    function getChecked(name) {
+      return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(el => el.value);
+    }
+    function val(id) {
+      const el = document.getElementById(id);
+      return el ? (el.value || null) : null;
+    }
+
+    async function submitToNeon(payload) {
+      const connStr = `postgresql://${NEON_USER}:${NEON_PASS}@${NEON_HOST}/${NEON_DB}?sslmode=require`;
+      const { neon } = await import('https://esm.sh/@neondatabase/serverless@1');
+      const sql = neon(connStr);
+
+      await sql`INSERT INTO submissions (
+        full_name, job_title, department, department_other, years_at_prodesign, contact_channels,
+        daily_tools, daily_tools_other, file_storage, mandatory_tools, mandatory_tools_detail,
+        task1_name, task1_desc, task1_freq, task1_duration, task1_tools, task1_pain,
+        task2_name, task2_desc, task2_freq, task2_duration, task2_tools, task2_pain,
+        task3_name, task3_desc, task3_freq, task3_duration, task3_tools, task3_pain,
+        priority_task, assistant_wish, automation_goals, automation_goals_other,
+        confidentiality, confidentiality_detail, no_change, anything_else
+      ) VALUES (
+        ${payload.fullName}, ${payload.jobTitle}, ${payload.department}, ${payload.departmentOther},
+        ${payload.yearsAtProdesign}, ${payload.contactChannels},
+        ${payload.dailyTools}, ${payload.dailyToolsOther}, ${payload.fileStorage},
+        ${payload.mandatoryTools}, ${payload.mandatoryToolsDetail},
+        ${payload.task1Name}, ${payload.task1Desc}, ${payload.task1Freq}, ${payload.task1Duration},
+        ${payload.task1Tools}, ${payload.task1Pain},
+        ${payload.task2Name}, ${payload.task2Desc}, ${payload.task2Freq}, ${payload.task2Duration},
+        ${payload.task2Tools}, ${payload.task2Pain},
+        ${payload.task3Name}, ${payload.task3Desc}, ${payload.task3Freq}, ${payload.task3Duration},
+        ${payload.task3Tools}, ${payload.task3Pain},
+        ${payload.priorityTask}, ${payload.assistantWish},
+        ${payload.automationGoals}, ${payload.automationGoalsOther},
+        ${payload.confidentiality}, ${payload.confidentialityDetail},
+        ${payload.noChange}, ${payload.anythingElse}
+      )`;
+    }
+
     // ── Form submission ──
-    document.getElementById('questForm').addEventListener('submit', function(e) {
+    document.getElementById('questForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
-      // Collect form data
-      const formData = new FormData(this);
-      const data = {};
-      for (const [key, value] of formData.entries()) {
-        if (data[key]) {
-          if (Array.isArray(data[key])) {
-            data[key].push(value);
-          } else {
-            data[key] = [data[key], value];
-          }
-        } else {
-          data[key] = value;
-        }
+      const submitBtn = this.querySelector('.btn-submit');
+      const origText = submitBtn.textContent;
+      submitBtn.textContent = 'Submitting...';
+      submitBtn.disabled = true;
+
+      const payload = {
+        fullName: val('fullName'),
+        jobTitle: val('jobTitle'),
+        department: val('department'),
+        departmentOther: val('departmentOtherText'),
+        yearsAtProdesign: val('yearsAtProdesign'),
+        contactChannels: getChecked('contactChannel'),
+        dailyTools: getChecked('dailyTools'),
+        dailyToolsOther: val('toolsOtherText'),
+        fileStorage: getChecked('fileStorage'),
+        mandatoryTools: val('mandatoryTools'),
+        mandatoryToolsDetail: val('mandatoryToolsText'),
+        task1Name: val('task1Name'),
+        task1Desc: val('task1Desc'),
+        task1Freq: val('task1Freq'),
+        task1Duration: val('task1Duration'),
+        task1Tools: getChecked('task1Tools'),
+        task1Pain: val('task1Pain'),
+        task2Name: val('task2Name'),
+        task2Desc: val('task2Desc'),
+        task2Freq: val('task2Freq'),
+        task2Duration: val('task2Duration'),
+        task2Tools: getChecked('task2Tools'),
+        task2Pain: val('task2Pain'),
+        task3Name: val('task3Name'),
+        task3Desc: val('task3Desc'),
+        task3Freq: val('task3Freq'),
+        task3Duration: val('task3Duration'),
+        task3Tools: getChecked('task3Tools'),
+        task3Pain: val('task3Pain'),
+        priorityTask: val('priority_task1')?.checked ? 'Task 1' : val('priority_task2')?.checked ? 'Task 2' : 'Task 3',
+        assistantWish: val('assistantWish'),
+        automationGoals: getChecked('automationGoals'),
+        automationGoalsOther: val('goalOtherText'),
+        confidentiality: val('confidentiality'),
+        confidentialityDetail: val('confidentialityText'),
+        noChange: val('noChange'),
+        anythingElse: val('anythingElse'),
+      };
+
+      // Fix priority task selection
+      const priorityRadio = document.querySelector('input[name="priorityTask"]:checked');
+      payload.priorityTask = priorityRadio ? priorityRadio.value : null;
+
+      try {
+        await submitToNeon(payload);
+
+        // Show success screen
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById('successScreen').classList.add('active');
+        document.querySelector('.progress-bar').style.display = 'none';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (err) {
+        console.error('Submission error:', err);
+        submitBtn.textContent = origText;
+        submitBtn.disabled = false;
+        alert('Something went wrong submitting your response. Please try again or contact the SyntheLIQ team.');
       }
-
-      // Log to console (replace with actual endpoint)
-      console.log('Questionnaire submitted:', JSON.stringify(data, null, 2));
-
-      // Show success screen
-      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-      document.getElementById('successScreen').classList.add('active');
-      document.querySelector('.progress-bar').style.display = 'none';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     // ── Init ──
