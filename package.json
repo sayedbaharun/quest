@@ -1,0 +1,7 @@
+{
+  "name": "prodesign-quest",
+  "private": true,
+  "dependencies": {
+    "@neondatabase/serverless": "^1"
+  }
+}
