@@ -488,32 +488,6 @@
           </select>
         </div>
 
-        <div class="field">
-          <div class="field-label">Preferred contact channel</div>
-          <div class="checkbox-group">
-            <div class="checkbox-item">
-              <input type="checkbox" id="contact_email" name="contactChannel" value="Email">
-              <label for="contact_email">Email</label>
-            </div>
-            <div class="checkbox-item">
-              <input type="checkbox" id="contact_whatsapp" name="contactChannel" value="WhatsApp">
-              <label for="contact_whatsapp">WhatsApp</label>
-            </div>
-            <div class="checkbox-item">
-              <input type="checkbox" id="contact_teams" name="contactChannel" value="Teams/Slack">
-              <label for="contact_teams">Teams / Slack</label>
-            </div>
-            <div class="checkbox-item">
-              <input type="checkbox" id="contact_phone" name="contactChannel" value="Phone">
-              <label for="contact_phone">Phone</label>
-            </div>
-            <div class="checkbox-item">
-              <input type="checkbox" id="contact_other" name="contactChannel" value="Other">
-              <label for="contact_other">Other</label>
-            </div>
-          </div>
-        </div>
-
         <div class="nav-buttons">
           <div></div>
           <button type="button" class="btn btn-primary" onclick="nextSection()">Next &rarr;</button>
@@ -594,7 +568,7 @@
         <div class="section-header">
           <div class="section-number">Section 3 of 5</div>
           <div class="section-title">Your Repetitive Tasks</div>
-          <div class="section-desc">Think of the tasks you do most often — especially ones that feel repetitive or time-consuming. Describe up to three.</div>
+          <div class="section-desc">Think of the tasks you do most often — especially ones that feel repetitive or time-consuming. Describe up to two.</div>
         </div>
 
         <!-- Task 1 -->
@@ -727,70 +701,6 @@
           </div>
         </div>
 
-        <!-- Task 3 -->
-        <div class="task-block">
-          <div class="task-block__title">Task 3</div>
-
-          <div class="field">
-            <label for="task3Name">Task name</label>
-            <input type="text" id="task3Name" name="task3Name" placeholder="e.g. Resize and export assets for different platforms">
-          </div>
-
-          <div class="field">
-            <label for="task3Desc">Briefly describe what you do for this task</label>
-            <textarea id="task3Desc" name="task3Desc" placeholder="Describe the steps involved."></textarea>
-          </div>
-
-          <div class="field">
-            <label for="task3Freq">How often do you do this?</label>
-            <select id="task3Freq" name="task3Freq">
-              <option value="" disabled selected>Select frequency</option>
-              <option value="Several times a day">Several times a day</option>
-              <option value="Once a day">Once a day</option>
-              <option value="A few times per week">A few times per week</option>
-              <option value="Once a week">Once a week</option>
-              <option value="A few times per month">A few times per month</option>
-              <option value="Rarely">Rarely</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="task3Duration">On average, how long does it take each time?</label>
-            <select id="task3Duration" name="task3Duration">
-              <option value="" disabled selected>Select duration</option>
-              <option value="<5 min">Less than 5 minutes</option>
-              <option value="5-15 min">5–15 minutes</option>
-              <option value="15-30 min">15–30 minutes</option>
-              <option value="30-60 min">30–60 minutes</option>
-              <option value=">60 min">More than 1 hour</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <div class="field-label">Which tools are involved?</div>
-            <div class="checkbox-group task-tools">
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_email" name="task3Tools" value="Outlook/Gmail"><label for="t3tool_email">Email</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_wa" name="task3Tools" value="WhatsApp"><label for="t3tool_wa">WhatsApp</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_ps" name="task3Tools" value="Photoshop"><label for="t3tool_ps">Photoshop</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_ai" name="task3Tools" value="Illustrator"><label for="t3tool_ai">Illustrator</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_id" name="task3Tools" value="InDesign"><label for="t3tool_id">InDesign</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_ae" name="task3Tools" value="After Effects"><label for="t3tool_ae">After Effects</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_pr" name="task3Tools" value="Premiere"><label for="t3tool_pr">Premiere</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_figma" name="task3Tools" value="Figma"><label for="t3tool_figma">Figma</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_ppt" name="task3Tools" value="PowerPoint/Keynote"><label for="t3tool_ppt">PPT / Keynote</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_excel" name="task3Tools" value="Excel/Sheets"><label for="t3tool_excel">Excel / Sheets</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_pm" name="task3Tools" value="PM Tool"><label for="t3tool_pm">PM Tool</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_drive" name="task3Tools" value="Shared Drive"><label for="t3tool_drive">Shared Drive</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_other" name="task3Tools" value="Other"><label for="t3tool_other">Other</label></div>
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="task3Pain">What is most annoying or difficult about this task?</label>
-            <textarea id="task3Pain" name="task3Pain" placeholder="What slows you down or frustrates you?"></textarea>
-          </div>
-        </div>
-
         <div class="nav-buttons">
           <button type="button" class="btn btn-secondary" onclick="prevSection()">&larr; Back</button>
           <button type="button" class="btn btn-primary" onclick="nextSection()">Next &rarr;</button>
@@ -815,10 +725,6 @@
             <div class="radio-item">
               <input type="radio" id="priority_task2" name="priorityTask" value="Task 2">
               <label for="priority_task2">Task 2</label>
-            </div>
-            <div class="radio-item">
-              <input type="radio" id="priority_task3" name="priorityTask" value="Task 3">
-              <label for="priority_task3">Task 3</label>
             </div>
           </div>
         </div>
@@ -998,7 +904,6 @@
         department: val('department'),
         departmentOther: val('departmentOtherText'),
         yearsAtProdesign: val('yearsAtProdesign'),
-        contactChannels: getChecked('contactChannel'),
         dailyTools: getChecked('dailyTools'),
         dailyToolsOther: val('toolsOtherText'),
         fileStorage: getChecked('fileStorage'),
@@ -1016,12 +921,6 @@
         task2Duration: val('task2Duration'),
         task2Tools: getChecked('task2Tools'),
         task2Pain: val('task2Pain'),
-        task3Name: val('task3Name'),
-        task3Desc: val('task3Desc'),
-        task3Freq: val('task3Freq'),
-        task3Duration: val('task3Duration'),
-        task3Tools: getChecked('task3Tools'),
-        task3Pain: val('task3Pain'),
         priorityTask: priorityRadio ? priorityRadio.value : null,
         assistantWish: val('assistantWish'),
         automationGoals: getChecked('automationGoals'),
