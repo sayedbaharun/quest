@@ -4,11 +4,10 @@ export const config = { runtime: "edge" };
 
 const ALLOWED_FIELDS = new Set([
   "fullName", "jobTitle", "department", "departmentOther", "yearsAtProdesign",
-  "contactChannels", "dailyTools", "dailyToolsOther", "fileStorage",
+  "dailyTools", "dailyToolsOther", "fileStorage",
   "mandatoryTools", "mandatoryToolsDetail",
   "task1Name", "task1Desc", "task1Freq", "task1Duration", "task1Tools", "task1Pain",
   "task2Name", "task2Desc", "task2Freq", "task2Duration", "task2Tools", "task2Pain",
-  "task3Name", "task3Desc", "task3Freq", "task3Duration", "task3Tools", "task3Pain",
   "priorityTask", "assistantWish", "automationGoals", "automationGoalsOther",
   "confidentiality", "confidentialityDetail", "noChange", "anythingElse",
 ]);
@@ -54,24 +53,21 @@ export default async function handler(req: Request) {
 
   try {
     await sql`INSERT INTO submissions (
-      full_name, job_title, department, department_other, years_at_prodesign, contact_channels,
+      full_name, job_title, department, department_other, years_at_prodesign,
       daily_tools, daily_tools_other, file_storage, mandatory_tools, mandatory_tools_detail,
       task1_name, task1_desc, task1_freq, task1_duration, task1_tools, task1_pain,
       task2_name, task2_desc, task2_freq, task2_duration, task2_tools, task2_pain,
-      task3_name, task3_desc, task3_freq, task3_duration, task3_tools, task3_pain,
       priority_task, assistant_wish, automation_goals, automation_goals_other,
       confidentiality, confidentiality_detail, no_change, anything_else
     ) VALUES (
       ${clean.fullName}, ${clean.jobTitle}, ${clean.department}, ${clean.departmentOther},
-      ${clean.yearsAtProdesign}, ${clean.contactChannels},
+      ${clean.yearsAtProdesign},
       ${clean.dailyTools}, ${clean.dailyToolsOther}, ${clean.fileStorage},
       ${clean.mandatoryTools}, ${clean.mandatoryToolsDetail},
       ${clean.task1Name}, ${clean.task1Desc}, ${clean.task1Freq}, ${clean.task1Duration},
       ${clean.task1Tools}, ${clean.task1Pain},
       ${clean.task2Name}, ${clean.task2Desc}, ${clean.task2Freq}, ${clean.task2Duration},
       ${clean.task2Tools}, ${clean.task2Pain},
-      ${clean.task3Name}, ${clean.task3Desc}, ${clean.task3Freq}, ${clean.task3Duration},
-      ${clean.task3Tools}, ${clean.task3Pain},
       ${clean.priorityTask}, ${clean.assistantWish},
       ${clean.automationGoals}, ${clean.automationGoalsOther},
       ${clean.confidentiality}, ${clean.confidentialityDetail},
