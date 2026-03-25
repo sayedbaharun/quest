@@ -1,36 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prodesign × SyntheLIQ — Workflow Discovery Questionnaire</title>
-  <meta name="description" content="Help us understand your daily work so we can identify the best opportunities for smart automation at Prodesign.">
+  <meta name="description"
+    content="Help us understand your daily work so we can identify the best opportunities for smart automation at Prodesign.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy: #0F172A;
-      --slate-800: #1E293B;
-      --slate-700: #334155;
-      --slate-400: #94A3B8;
-      --slate-300: #CBD5E1;
-      --slate-50: #F8FAFC;
-      --cyan: #22D3EE;
-      --sky-500: #0EA5E9;
-      --cyan-300: #67E8F9;
-      --white: #FFFFFF;
-      --danger: #F87171;
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html { scroll-behavior: smooth; }
+    :root {
+      --background: #0C0F1A;
+      --foreground: #E8E4DE;
+      --primary: #C8A96E;
+      --primary-light: #E5D4A8;
+      --primary-dark: #A68B4B;
+      --primary-foreground: #0C0F1A;
+      --secondary: #D4573B;
+      --secondary-light: #E87A62;
+      --accent: #4A9B7F;
+      --card: #141824;
+      --muted: #252A36;
+      --muted-foreground: #8B8680;
+      --border: rgba(200, 169, 110, 0.15);
+      --border-hover: rgba(200, 169, 110, 0.25);
+      --white: #FFFFFF;
+      --danger: #D4573B;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--navy);
-      color: var(--white);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--background);
+      color: var(--foreground);
       font-size: 16px;
       line-height: 1.6;
       font-weight: 400;
@@ -41,21 +58,27 @@
     .header {
       text-align: center;
       padding: 64px 24px 48px;
-      background: linear-gradient(180deg, var(--navy) 0%, var(--slate-800) 100%);
-      border-bottom: 1px solid rgba(34, 211, 238, 0.15);
+      background: linear-gradient(180deg, var(--background) 0%, var(--card) 100%);
+      border-bottom: 1px solid var(--border);
     }
+
     .header__logo {
+      font-family: 'DM Sans', sans-serif;
       font-size: 28px;
       font-weight: 700;
       letter-spacing: -0.5px;
       margin-bottom: 8px;
     }
-    .header__logo span { color: var(--cyan); }
+
+    .header__logo span {
+      color: var(--primary);
+    }
+
     .header__badge {
       display: inline-block;
-      background: rgba(34, 211, 238, 0.1);
-      border: 1px solid rgba(34, 211, 238, 0.25);
-      color: var(--cyan);
+      background: rgba(200, 169, 110, 0.1);
+      border: 1px solid var(--border);
+      color: var(--primary);
       font-size: 12px;
       font-weight: 600;
       padding: 4px 12px;
@@ -64,41 +87,49 @@
       letter-spacing: 1px;
       margin-bottom: 24px;
     }
+
     .header h1 {
+      font-family: 'Instrument Serif', Georgia, serif;
       font-size: clamp(28px, 5vw, 48px);
-      font-weight: 700;
-      line-height: 1.1;
+      font-weight: 400;
+      line-height: 1.15;
       margin-bottom: 16px;
     }
+
     .header p {
       font-size: 16px;
-      color: var(--slate-400);
+      color: var(--muted-foreground);
       max-width: 560px;
       margin: 0 auto;
       line-height: 1.6;
     }
+
     .header__time {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       margin-top: 24px;
       font-size: 14px;
-      color: var(--slate-400);
-      background: var(--slate-800);
+      color: var(--muted-foreground);
+      background: var(--muted);
       padding: 8px 16px;
       border-radius: 8px;
     }
-    .header__time svg { flex-shrink: 0; }
+
+    .header__time svg {
+      flex-shrink: 0;
+    }
 
     /* ── Progress ── */
     .progress-bar {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--navy);
-      border-bottom: 1px solid var(--slate-700);
+      background: var(--background);
+      border-bottom: 1px solid var(--border);
       padding: 12px 24px;
     }
+
     .progress-bar__inner {
       max-width: 640px;
       margin: 0 auto;
@@ -106,24 +137,27 @@
       align-items: center;
       gap: 12px;
     }
+
     .progress-bar__track {
       flex: 1;
       height: 4px;
-      background: var(--slate-700);
+      background: var(--muted);
       border-radius: 2px;
       overflow: hidden;
     }
+
     .progress-bar__fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--cyan), var(--sky-500));
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
       border-radius: 2px;
       transition: width 0.4s ease;
       width: 0%;
     }
+
     .progress-bar__text {
       font-size: 13px;
       font-weight: 600;
-      color: var(--cyan);
+      color: var(--primary);
       white-space: nowrap;
     }
 
@@ -137,35 +171,49 @@
     /* ── Sections ── */
     .section {
       display: none;
-      animation: fadeIn 0.3s ease;
+      animation: fadeIn 0.4s ease-out;
     }
-    .section.active { display: block; }
+
+    .section.active {
+      display: block;
+    }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .section-header {
       padding: 48px 0 32px;
     }
+
     .section-number {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
-      color: var(--cyan);
+      color: var(--primary);
       text-transform: uppercase;
       letter-spacing: 1.5px;
       margin-bottom: 8px;
     }
+
     .section-title {
+      font-family: 'Instrument Serif', Georgia, serif;
       font-size: 32px;
-      font-weight: 700;
+      font-weight: 400;
       line-height: 1.2;
       margin-bottom: 8px;
     }
+
     .section-desc {
       font-size: 15px;
-      color: var(--slate-400);
+      color: var(--muted-foreground);
       line-height: 1.5;
     }
 
@@ -173,22 +221,25 @@
     .field {
       margin-bottom: 32px;
     }
+
     .field label,
     .field .field-label {
       display: block;
       font-size: 15px;
       font-weight: 500;
       margin-bottom: 8px;
-      color: var(--white);
+      color: var(--foreground);
     }
+
     .field .field-hint {
       font-size: 13px;
-      color: var(--slate-400);
+      color: var(--muted-foreground);
       margin-bottom: 8px;
       line-height: 1.4;
     }
+
     .field .required {
-      color: var(--cyan);
+      color: var(--primary);
     }
 
     input[type="text"],
@@ -197,38 +248,43 @@
     textarea {
       width: 100%;
       padding: 12px 16px;
-      background: var(--slate-800);
-      border: 1px solid var(--slate-700);
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 8px;
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
+      color: var(--foreground);
+      font-family: 'DM Sans', sans-serif;
       font-size: 15px;
       line-height: 1.5;
       transition: border-color 0.2s, box-shadow 0.2s;
       outline: none;
     }
+
     input[type="text"]:focus,
     input[type="email"]:focus,
     select:focus,
     textarea:focus {
-      border-color: var(--cyan);
-      box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.15);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.15);
     }
+
     input::placeholder,
     textarea::placeholder {
-      color: var(--slate-400);
+      color: var(--muted-foreground);
     }
+
     select {
       appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238B8680' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 12px center;
       padding-right: 40px;
     }
+
     select option {
-      background: var(--slate-800);
-      color: var(--white);
+      background: var(--card);
+      color: var(--foreground);
     }
+
     textarea {
       resize: vertical;
       min-height: 100px;
@@ -241,10 +297,12 @@
       flex-wrap: wrap;
       gap: 8px;
     }
+
     .checkbox-item,
     .radio-item {
       position: relative;
     }
+
     .checkbox-item input,
     .radio-item input {
       position: absolute;
@@ -252,32 +310,35 @@
       width: 0;
       height: 0;
     }
+
     .checkbox-item label,
     .radio-item label {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 8px 16px;
-      background: var(--slate-800);
-      border: 1px solid var(--slate-700);
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 8px;
       font-size: 14px;
       font-weight: 400;
-      color: var(--slate-300);
+      color: var(--muted-foreground);
       cursor: pointer;
       transition: all 0.2s;
       user-select: none;
     }
+
     .checkbox-item label:hover,
     .radio-item label:hover {
-      border-color: var(--slate-400);
-      color: var(--white);
+      border-color: var(--border-hover);
+      color: var(--foreground);
     }
-    .checkbox-item input:checked + label,
-    .radio-item input:checked + label {
-      background: rgba(34, 211, 238, 0.1);
-      border-color: var(--cyan);
-      color: var(--white);
+
+    .checkbox-item input:checked+label,
+    .radio-item input:checked+label {
+      background: rgba(200, 169, 110, 0.1);
+      border-color: var(--primary);
+      color: var(--foreground);
     }
 
     /* ── Other text inputs inline ── */
@@ -285,22 +346,28 @@
       margin-top: 8px;
       display: none;
     }
-    .other-text.visible { display: block; }
+
+    .other-text.visible {
+      display: block;
+    }
 
     /* ── Task Block ── */
     .task-block {
-      background: var(--slate-800);
-      border: 1px solid var(--slate-700);
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 12px;
       padding: 24px;
       margin-bottom: 32px;
     }
+
     .task-block__title {
+      font-family: 'Instrument Serif', Georgia, serif;
       font-size: 18px;
-      font-weight: 600;
+      font-weight: 400;
       margin-bottom: 20px;
-      color: var(--cyan);
+      color: var(--primary);
     }
+
     .task-block .field:last-child {
       margin-bottom: 0;
     }
@@ -311,48 +378,56 @@
       justify-content: space-between;
       gap: 16px;
       padding-top: 16px;
-      border-top: 1px solid var(--slate-700);
+      border-top: 1px solid var(--border);
       margin-top: 16px;
     }
+
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 12px 24px;
       border-radius: 8px;
-      font-family: 'Inter', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 14px;
       font-weight: 600;
       border: none;
       cursor: pointer;
       transition: all 0.2s;
     }
+
     .btn-primary {
-      background: var(--cyan);
-      color: var(--navy);
+      background: var(--primary);
+      color: var(--primary-foreground);
     }
+
     .btn-primary:hover {
-      background: var(--cyan-300);
+      background: var(--primary-light);
     }
+
     .btn-secondary {
       background: transparent;
-      color: var(--slate-400);
-      border: 1px solid var(--slate-700);
+      color: var(--muted-foreground);
+      border: 1px solid var(--border);
     }
+
     .btn-secondary:hover {
-      border-color: var(--slate-400);
-      color: var(--white);
+      border-color: var(--border-hover);
+      color: var(--foreground);
     }
+
     .btn:disabled {
       opacity: 0.4;
       cursor: not-allowed;
     }
+
     .btn-submit {
-      background: linear-gradient(135deg, var(--cyan), var(--sky-500));
-      color: var(--navy);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--primary-foreground);
       padding: 14px 32px;
       font-size: 15px;
     }
+
     .btn-submit:hover {
       opacity: 0.9;
     }
@@ -363,25 +438,32 @@
       text-align: center;
       padding: 80px 24px;
     }
-    .success-screen.active { display: block; }
+
+    .success-screen.active {
+      display: block;
+    }
+
     .success-icon {
       width: 80px;
       height: 80px;
       margin: 0 auto 24px;
-      background: rgba(34, 211, 238, 0.1);
+      background: rgba(74, 155, 127, 0.1);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
     }
+
     .success-screen h2 {
+      font-family: 'Instrument Serif', Georgia, serif;
       font-size: 32px;
-      font-weight: 700;
+      font-weight: 400;
       margin-bottom: 12px;
     }
+
     .success-screen p {
       font-size: 16px;
-      color: var(--slate-400);
+      color: var(--muted-foreground);
       max-width: 480px;
       margin: 0 auto;
     }
@@ -390,28 +472,57 @@
     .footer {
       text-align: center;
       padding: 32px 24px;
-      border-top: 1px solid var(--slate-700);
+      border-top: 1px solid var(--border);
       font-size: 13px;
-      color: var(--slate-400);
+      color: var(--muted-foreground);
     }
+
     .footer a {
-      color: var(--cyan);
+      color: var(--primary);
       text-decoration: none;
     }
-    .footer a:hover { text-decoration: underline; }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
 
     /* ── Responsive ── */
     @media (max-width: 480px) {
-      .header { padding: 48px 16px 32px; }
-      .container { padding: 0 16px 64px; }
-      .task-block { padding: 16px; }
-      .checkbox-group, .radio-group { gap: 6px; }
-      .checkbox-item label, .radio-item label { font-size: 13px; padding: 6px 12px; }
-      .nav-buttons { flex-direction: column; }
-      .nav-buttons .btn { width: 100%; justify-content: center; }
+      .header {
+        padding: 48px 16px 32px;
+      }
+
+      .container {
+        padding: 0 16px 64px;
+      }
+
+      .task-block {
+        padding: 16px;
+      }
+
+      .checkbox-group,
+      .radio-group {
+        gap: 6px;
+      }
+
+      .checkbox-item label,
+      .radio-item label {
+        font-size: 13px;
+        padding: 6px 12px;
+      }
+
+      .nav-buttons {
+        flex-direction: column;
+      }
+
+      .nav-buttons .btn {
+        width: 100%;
+        justify-content: center;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Header -->
@@ -421,7 +532,11 @@
     <h1>Prodesign Questionnaire</h1>
     <p>Help us understand your daily work so we can find the best opportunities for smart automation at Prodesign.</p>
     <div class="header__time">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
+      </svg>
       3–5 minutes to complete
     </div>
   </header>
@@ -532,22 +647,41 @@
           <div class="field-label">Which tools do you use every day? <span class="required">*</span></div>
           <div class="field-hint">Select all that apply.</div>
           <div class="checkbox-group" id="dailyTools">
-            <div class="checkbox-item"><input type="checkbox" id="tool_outlook" name="dailyTools" value="Outlook/Gmail"><label for="tool_outlook">Outlook / Gmail</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="tool_whatsapp" name="dailyTools" value="WhatsApp"><label for="tool_whatsapp">WhatsApp</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="tool_teams" name="dailyTools" value="Teams/Slack"><label for="tool_teams">Teams / Slack</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="tool_photoshop" name="dailyTools" value="Adobe Photoshop"><label for="tool_photoshop">Adobe Photoshop</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="tool_illustrator" name="dailyTools" value="Adobe Illustrator"><label for="tool_illustrator">Adobe Illustrator</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="tool_indesign" name="dailyTools" value="Adobe InDesign"><label for="tool_indesign">Adobe InDesign</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="tool_aftereffects" name="dailyTools" value="After Effects"><label for="tool_aftereffects">After Effects</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="tool_premiere" name="dailyTools" value="Premiere Pro"><label for="tool_premiere">Premiere Pro</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="tool_figma" name="dailyTools" value="Figma"><label for="tool_figma">Figma</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="tool_ppt" name="dailyTools" value="PowerPoint/Keynote"><label for="tool_ppt">PowerPoint / Keynote</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="tool_excel" name="dailyTools" value="Excel/Sheets"><label for="tool_excel">Excel / Sheets</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="tool_pm" name="dailyTools" value="Project Management (Asana/Trello/ClickUp)"><label for="tool_pm">Asana / Trello / ClickUp</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="tool_drives" name="dailyTools" value="Shared Drives (Google Drive/OneDrive/Dropbox)"><label for="tool_drives">Google Drive / OneDrive / Dropbox</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="tool_traffic" name="dailyTools" value="Agency job management/traffic tool"><label for="tool_traffic">Agency job / traffic tool</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="tool_notraffic" name="dailyTools" value="No traffic tool"><label for="tool_notraffic">Not sure / I don't use one</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="tool_other" name="dailyTools" value="Other"><label for="tool_other">Other</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tool_outlook" name="dailyTools"
+                value="Outlook/Gmail"><label for="tool_outlook">Outlook / Gmail</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tool_whatsapp" name="dailyTools"
+                value="WhatsApp"><label for="tool_whatsapp">WhatsApp</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tool_teams" name="dailyTools"
+                value="Teams/Slack"><label for="tool_teams">Teams / Slack</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tool_photoshop" name="dailyTools"
+                value="Adobe Photoshop"><label for="tool_photoshop">Adobe Photoshop</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tool_illustrator" name="dailyTools"
+                value="Adobe Illustrator"><label for="tool_illustrator">Adobe Illustrator</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tool_indesign" name="dailyTools"
+                value="Adobe InDesign"><label for="tool_indesign">Adobe InDesign</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tool_aftereffects" name="dailyTools"
+                value="After Effects"><label for="tool_aftereffects">After Effects</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tool_premiere" name="dailyTools"
+                value="Premiere Pro"><label for="tool_premiere">Premiere Pro</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tool_figma" name="dailyTools" value="Figma"><label
+                for="tool_figma">Figma</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tool_ppt" name="dailyTools"
+                value="PowerPoint/Keynote"><label for="tool_ppt">PowerPoint / Keynote</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tool_excel" name="dailyTools"
+                value="Excel/Sheets"><label for="tool_excel">Excel / Sheets</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tool_pm" name="dailyTools"
+                value="Project Management (Asana/Trello/ClickUp)"><label for="tool_pm">Asana / Trello / ClickUp</label>
+            </div>
+            <div class="checkbox-item"><input type="checkbox" id="tool_drives" name="dailyTools"
+                value="Shared Drives (Google Drive/OneDrive/Dropbox)"><label for="tool_drives">Google Drive / OneDrive /
+                Dropbox</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tool_traffic" name="dailyTools"
+                value="Agency job management/traffic tool"><label for="tool_traffic">Agency job / traffic tool</label>
+            </div>
+            <div class="checkbox-item"><input type="checkbox" id="tool_notraffic" name="dailyTools"
+                value="No traffic tool"><label for="tool_notraffic">Not sure / I don't use one</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tool_other" name="dailyTools" value="Other"><label
+                for="tool_other">Other</label></div>
           </div>
         </div>
 
@@ -560,17 +694,24 @@
           <div class="field-label">Where do you usually store and find client files?</div>
           <div class="field-hint">Select all that apply.</div>
           <div class="checkbox-group">
-            <div class="checkbox-item"><input type="checkbox" id="store_drive" name="fileStorage" value="Shared drive"><label for="store_drive">Shared drive</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="store_local" name="fileStorage" value="Local computer"><label for="store_local">Local computer</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="store_email" name="fileStorage" value="Email attachments"><label for="store_email">Email attachments</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="store_whatsapp" name="fileStorage" value="WhatsApp"><label for="store_whatsapp">WhatsApp</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="store_pm" name="fileStorage" value="Project management tool"><label for="store_pm">Project management tool</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="store_other" name="fileStorage" value="Other"><label for="store_other">Other</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="store_drive" name="fileStorage"
+                value="Shared drive"><label for="store_drive">Shared drive</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="store_local" name="fileStorage"
+                value="Local computer"><label for="store_local">Local computer</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="store_email" name="fileStorage"
+                value="Email attachments"><label for="store_email">Email attachments</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="store_whatsapp" name="fileStorage"
+                value="WhatsApp"><label for="store_whatsapp">WhatsApp</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="store_pm" name="fileStorage"
+                value="Project management tool"><label for="store_pm">Project management tool</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="store_other" name="fileStorage" value="Other"><label
+                for="store_other">Other</label></div>
           </div>
         </div>
 
         <div class="field">
-          <label for="mandatoryTools">Are there any tools or systems you must use because of client or internal policy?</label>
+          <label for="mandatoryTools">Are there any tools or systems you must use because of client or internal
+            policy?</label>
           <select id="mandatoryTools" name="mandatoryTools">
             <option value="" disabled selected>Select</option>
             <option value="Yes">Yes</option>
@@ -580,7 +721,8 @@
 
         <div class="field other-text" id="mandatoryToolsDetail">
           <label for="mandatoryToolsText">Which tools and why?</label>
-          <input type="text" id="mandatoryToolsText" name="mandatoryToolsText" placeholder="e.g. Client requires us to use their Sharepoint for all deliverables">
+          <input type="text" id="mandatoryToolsText" name="mandatoryToolsText"
+            placeholder="e.g. Client requires us to use their Sharepoint for all deliverables">
         </div>
 
         <div class="nav-buttons">
@@ -594,7 +736,8 @@
         <div class="section-header">
           <div class="section-number">Section 3 of 5</div>
           <div class="section-title">Your Repetitive Tasks</div>
-          <div class="section-desc">Think of the tasks you do most often — especially ones that feel repetitive or time-consuming. Describe up to three.</div>
+          <div class="section-desc">Think of the tasks you do most often — especially ones that feel repetitive or
+            time-consuming. Describe up to three.</div>
         </div>
 
         <!-- Task 1 -->
@@ -603,13 +746,15 @@
 
           <div class="field">
             <label for="task1Name">Task name <span class="required">*</span></label>
-            <input type="text" id="task1Name" name="task1Name" placeholder="e.g. Prepare Key Visual options for client approval" required>
+            <input type="text" id="task1Name" name="task1Name"
+              placeholder="e.g. Prepare Key Visual options for client approval" required>
           </div>
 
           <div class="field">
             <label for="task1Desc">Briefly describe what you do for this task</label>
             <div class="field-hint">2–5 sentences about the steps involved.</div>
-            <textarea id="task1Desc" name="task1Desc" placeholder="e.g. I receive the brief, gather references, create 3 layout options in Illustrator, export as PDF, and email to the account manager for review."></textarea>
+            <textarea id="task1Desc" name="task1Desc"
+              placeholder="e.g. I receive the brief, gather references, create 3 layout options in Illustrator, export as PDF, and email to the account manager for review."></textarea>
           </div>
 
           <div class="field">
@@ -640,25 +785,39 @@
           <div class="field">
             <div class="field-label">Which tools are involved?</div>
             <div class="checkbox-group task-tools">
-              <div class="checkbox-item"><input type="checkbox" id="t1tool_email" name="task1Tools" value="Outlook/Gmail"><label for="t1tool_email">Email</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t1tool_wa" name="task1Tools" value="WhatsApp"><label for="t1tool_wa">WhatsApp</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t1tool_ps" name="task1Tools" value="Photoshop"><label for="t1tool_ps">Photoshop</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t1tool_ai" name="task1Tools" value="Illustrator"><label for="t1tool_ai">Illustrator</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t1tool_id" name="task1Tools" value="InDesign"><label for="t1tool_id">InDesign</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t1tool_ae" name="task1Tools" value="After Effects"><label for="t1tool_ae">After Effects</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t1tool_pr" name="task1Tools" value="Premiere"><label for="t1tool_pr">Premiere</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t1tool_figma" name="task1Tools" value="Figma"><label for="t1tool_figma">Figma</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t1tool_ppt" name="task1Tools" value="PowerPoint/Keynote"><label for="t1tool_ppt">PPT / Keynote</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t1tool_excel" name="task1Tools" value="Excel/Sheets"><label for="t1tool_excel">Excel / Sheets</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t1tool_pm" name="task1Tools" value="PM Tool"><label for="t1tool_pm">PM Tool</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t1tool_drive" name="task1Tools" value="Shared Drive"><label for="t1tool_drive">Shared Drive</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t1tool_other" name="task1Tools" value="Other"><label for="t1tool_other">Other</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t1tool_email" name="task1Tools"
+                  value="Outlook/Gmail"><label for="t1tool_email">Email</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t1tool_wa" name="task1Tools" value="WhatsApp"><label
+                  for="t1tool_wa">WhatsApp</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t1tool_ps" name="task1Tools"
+                  value="Photoshop"><label for="t1tool_ps">Photoshop</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t1tool_ai" name="task1Tools"
+                  value="Illustrator"><label for="t1tool_ai">Illustrator</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t1tool_id" name="task1Tools" value="InDesign"><label
+                  for="t1tool_id">InDesign</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t1tool_ae" name="task1Tools"
+                  value="After Effects"><label for="t1tool_ae">After Effects</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t1tool_pr" name="task1Tools" value="Premiere"><label
+                  for="t1tool_pr">Premiere</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t1tool_figma" name="task1Tools" value="Figma"><label
+                  for="t1tool_figma">Figma</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t1tool_ppt" name="task1Tools"
+                  value="PowerPoint/Keynote"><label for="t1tool_ppt">PPT / Keynote</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t1tool_excel" name="task1Tools"
+                  value="Excel/Sheets"><label for="t1tool_excel">Excel / Sheets</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t1tool_pm" name="task1Tools" value="PM Tool"><label
+                  for="t1tool_pm">PM Tool</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t1tool_drive" name="task1Tools"
+                  value="Shared Drive"><label for="t1tool_drive">Shared Drive</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t1tool_other" name="task1Tools" value="Other"><label
+                  for="t1tool_other">Other</label></div>
             </div>
           </div>
 
           <div class="field">
             <label for="task1Pain">What is most annoying or difficult about this task?</label>
-            <div class="field-hint">For example: too much copy-paste between tools, waiting for information from others, manual file renaming/exporting, repeating the same changes many times.</div>
+            <div class="field-hint">For example: too much copy-paste between tools, waiting for information from others,
+              manual file renaming/exporting, repeating the same changes many times.</div>
             <textarea id="task1Pain" name="task1Pain" placeholder="What slows you down or frustrates you?"></textarea>
           </div>
         </div>
@@ -705,19 +864,32 @@
           <div class="field">
             <div class="field-label">Which tools are involved?</div>
             <div class="checkbox-group task-tools">
-              <div class="checkbox-item"><input type="checkbox" id="t2tool_email" name="task2Tools" value="Outlook/Gmail"><label for="t2tool_email">Email</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t2tool_wa" name="task2Tools" value="WhatsApp"><label for="t2tool_wa">WhatsApp</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t2tool_ps" name="task2Tools" value="Photoshop"><label for="t2tool_ps">Photoshop</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t2tool_ai" name="task2Tools" value="Illustrator"><label for="t2tool_ai">Illustrator</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t2tool_id" name="task2Tools" value="InDesign"><label for="t2tool_id">InDesign</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t2tool_ae" name="task2Tools" value="After Effects"><label for="t2tool_ae">After Effects</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t2tool_pr" name="task2Tools" value="Premiere"><label for="t2tool_pr">Premiere</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t2tool_figma" name="task2Tools" value="Figma"><label for="t2tool_figma">Figma</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t2tool_ppt" name="task2Tools" value="PowerPoint/Keynote"><label for="t2tool_ppt">PPT / Keynote</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t2tool_excel" name="task2Tools" value="Excel/Sheets"><label for="t2tool_excel">Excel / Sheets</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t2tool_pm" name="task2Tools" value="PM Tool"><label for="t2tool_pm">PM Tool</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t2tool_drive" name="task2Tools" value="Shared Drive"><label for="t2tool_drive">Shared Drive</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t2tool_other" name="task2Tools" value="Other"><label for="t2tool_other">Other</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t2tool_email" name="task2Tools"
+                  value="Outlook/Gmail"><label for="t2tool_email">Email</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t2tool_wa" name="task2Tools" value="WhatsApp"><label
+                  for="t2tool_wa">WhatsApp</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t2tool_ps" name="task2Tools"
+                  value="Photoshop"><label for="t2tool_ps">Photoshop</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t2tool_ai" name="task2Tools"
+                  value="Illustrator"><label for="t2tool_ai">Illustrator</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t2tool_id" name="task2Tools" value="InDesign"><label
+                  for="t2tool_id">InDesign</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t2tool_ae" name="task2Tools"
+                  value="After Effects"><label for="t2tool_ae">After Effects</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t2tool_pr" name="task2Tools" value="Premiere"><label
+                  for="t2tool_pr">Premiere</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t2tool_figma" name="task2Tools" value="Figma"><label
+                  for="t2tool_figma">Figma</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t2tool_ppt" name="task2Tools"
+                  value="PowerPoint/Keynote"><label for="t2tool_ppt">PPT / Keynote</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t2tool_excel" name="task2Tools"
+                  value="Excel/Sheets"><label for="t2tool_excel">Excel / Sheets</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t2tool_pm" name="task2Tools" value="PM Tool"><label
+                  for="t2tool_pm">PM Tool</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t2tool_drive" name="task2Tools"
+                  value="Shared Drive"><label for="t2tool_drive">Shared Drive</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t2tool_other" name="task2Tools" value="Other"><label
+                  for="t2tool_other">Other</label></div>
             </div>
           </div>
 
@@ -733,7 +905,8 @@
 
           <div class="field">
             <label for="task3Name">Task name</label>
-            <input type="text" id="task3Name" name="task3Name" placeholder="e.g. Resize and export assets for different platforms">
+            <input type="text" id="task3Name" name="task3Name"
+              placeholder="e.g. Resize and export assets for different platforms">
           </div>
 
           <div class="field">
@@ -769,19 +942,32 @@
           <div class="field">
             <div class="field-label">Which tools are involved?</div>
             <div class="checkbox-group task-tools">
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_email" name="task3Tools" value="Outlook/Gmail"><label for="t3tool_email">Email</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_wa" name="task3Tools" value="WhatsApp"><label for="t3tool_wa">WhatsApp</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_ps" name="task3Tools" value="Photoshop"><label for="t3tool_ps">Photoshop</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_ai" name="task3Tools" value="Illustrator"><label for="t3tool_ai">Illustrator</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_id" name="task3Tools" value="InDesign"><label for="t3tool_id">InDesign</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_ae" name="task3Tools" value="After Effects"><label for="t3tool_ae">After Effects</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_pr" name="task3Tools" value="Premiere"><label for="t3tool_pr">Premiere</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_figma" name="task3Tools" value="Figma"><label for="t3tool_figma">Figma</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_ppt" name="task3Tools" value="PowerPoint/Keynote"><label for="t3tool_ppt">PPT / Keynote</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_excel" name="task3Tools" value="Excel/Sheets"><label for="t3tool_excel">Excel / Sheets</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_pm" name="task3Tools" value="PM Tool"><label for="t3tool_pm">PM Tool</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_drive" name="task3Tools" value="Shared Drive"><label for="t3tool_drive">Shared Drive</label></div>
-              <div class="checkbox-item"><input type="checkbox" id="t3tool_other" name="task3Tools" value="Other"><label for="t3tool_other">Other</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t3tool_email" name="task3Tools"
+                  value="Outlook/Gmail"><label for="t3tool_email">Email</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t3tool_wa" name="task3Tools" value="WhatsApp"><label
+                  for="t3tool_wa">WhatsApp</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t3tool_ps" name="task3Tools"
+                  value="Photoshop"><label for="t3tool_ps">Photoshop</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t3tool_ai" name="task3Tools"
+                  value="Illustrator"><label for="t3tool_ai">Illustrator</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t3tool_id" name="task3Tools" value="InDesign"><label
+                  for="t3tool_id">InDesign</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t3tool_ae" name="task3Tools"
+                  value="After Effects"><label for="t3tool_ae">After Effects</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t3tool_pr" name="task3Tools" value="Premiere"><label
+                  for="t3tool_pr">Premiere</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t3tool_figma" name="task3Tools" value="Figma"><label
+                  for="t3tool_figma">Figma</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t3tool_ppt" name="task3Tools"
+                  value="PowerPoint/Keynote"><label for="t3tool_ppt">PPT / Keynote</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t3tool_excel" name="task3Tools"
+                  value="Excel/Sheets"><label for="t3tool_excel">Excel / Sheets</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t3tool_pm" name="task3Tools" value="PM Tool"><label
+                  for="t3tool_pm">PM Tool</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t3tool_drive" name="task3Tools"
+                  value="Shared Drive"><label for="t3tool_drive">Shared Drive</label></div>
+              <div class="checkbox-item"><input type="checkbox" id="t3tool_other" name="task3Tools" value="Other"><label
+                  for="t3tool_other">Other</label></div>
             </div>
           </div>
 
@@ -802,11 +988,13 @@
         <div class="section-header">
           <div class="section-number">Section 4 of 5</div>
           <div class="section-title">Priority &amp; Impact</div>
-          <div class="section-desc">Help us understand which improvements would make the biggest difference for you.</div>
+          <div class="section-desc">Help us understand which improvements would make the biggest difference for you.
+          </div>
         </div>
 
         <div class="field">
-          <div class="field-label">Which task would you most like to improve or automate first? <span class="required">*</span></div>
+          <div class="field-label">Which task would you most like to improve or automate first? <span
+              class="required">*</span></div>
           <div class="radio-group">
             <div class="radio-item">
               <input type="radio" id="priority_task1" name="priorityTask" value="Task 1" required>
@@ -824,21 +1012,30 @@
         </div>
 
         <div class="field">
-          <label for="assistantWish">If a smart assistant could help you with that task, what would you want it to do?</label>
-          <div class="field-hint">Be as specific as you like — for example: draft emails, organise files, update trackers, generate first versions, summarise briefs, resize assets automatically, etc.</div>
-          <textarea id="assistantWish" name="assistantWish" rows="4" placeholder="Describe your ideal digital helper for this task..."></textarea>
+          <label for="assistantWish">If a smart assistant could help you with that task, what would you want it to
+            do?</label>
+          <div class="field-hint">Be as specific as you like — for example: draft emails, organise files, update
+            trackers, generate first versions, summarise briefs, resize assets automatically, etc.</div>
+          <textarea id="assistantWish" name="assistantWish" rows="4"
+            placeholder="Describe your ideal digital helper for this task..."></textarea>
         </div>
 
         <div class="field">
           <div class="field-label">What is your main goal with automation?</div>
           <div class="field-hint">Select all that apply.</div>
           <div class="checkbox-group">
-            <div class="checkbox-item"><input type="checkbox" id="goal_time" name="automationGoals" value="Save time"><label for="goal_time">Save time</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="goal_mistakes" name="automationGoals" value="Reduce mistakes"><label for="goal_mistakes">Reduce mistakes</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="goal_urgent" name="automationGoals" value="Handle urgent work faster"><label for="goal_urgent">Handle urgent work faster</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="goal_organized" name="automationGoals" value="Keep things more organized"><label for="goal_organized">Keep things more organised</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="goal_comms" name="automationGoals" value="Improve communication"><label for="goal_comms">Improve communication</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="goal_other" name="automationGoals" value="Other"><label for="goal_other">Other</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="goal_time" name="automationGoals"
+                value="Save time"><label for="goal_time">Save time</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="goal_mistakes" name="automationGoals"
+                value="Reduce mistakes"><label for="goal_mistakes">Reduce mistakes</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="goal_urgent" name="automationGoals"
+                value="Handle urgent work faster"><label for="goal_urgent">Handle urgent work faster</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="goal_organized" name="automationGoals"
+                value="Keep things more organized"><label for="goal_organized">Keep things more organised</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="goal_comms" name="automationGoals"
+                value="Improve communication"><label for="goal_comms">Improve communication</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="goal_other" name="automationGoals"
+                value="Other"><label for="goal_other">Other</label></div>
           </div>
         </div>
 
@@ -858,11 +1055,13 @@
         <div class="section-header">
           <div class="section-number">Section 5 of 5</div>
           <div class="section-title">Constraints &amp; Notes</div>
-          <div class="section-desc">Almost done! A few final questions to make sure we respect any important boundaries.</div>
+          <div class="section-desc">Almost done! A few final questions to make sure we respect any important boundaries.
+          </div>
         </div>
 
         <div class="field">
-          <label for="confidentiality">Are there any client or internal confidentiality rules we should be aware of for your work?</label>
+          <label for="confidentiality">Are there any client or internal confidentiality rules we should be aware of for
+            your work?</label>
           <select id="confidentiality" name="confidentiality">
             <option value="" disabled selected>Select</option>
             <option value="Yes">Yes</option>
@@ -872,18 +1071,22 @@
 
         <div class="field other-text" id="confidentialityDetail">
           <label for="confidentialityText">Please briefly describe</label>
-          <textarea id="confidentialityText" name="confidentialityText" rows="2" placeholder="e.g. NDA with certain clients, no external cloud storage for brand X files"></textarea>
+          <textarea id="confidentialityText" name="confidentialityText" rows="2"
+            placeholder="e.g. NDA with certain clients, no external cloud storage for brand X files"></textarea>
         </div>
 
         <div class="field">
           <label for="noChange">Are there any tools or processes that must NOT change?</label>
-          <textarea id="noChange" name="noChange" rows="3" placeholder="e.g. We must keep using the current proofing tool because the client requires it."></textarea>
+          <textarea id="noChange" name="noChange" rows="3"
+            placeholder="e.g. We must keep using the current proofing tool because the client requires it."></textarea>
         </div>
 
         <div class="field">
-          <label for="anythingElse">Is there anything else we should know about how you work or where you feel you waste time?</label>
+          <label for="anythingElse">Is there anything else we should know about how you work or where you feel you waste
+            time?</label>
           <div class="field-hint">Optional — but any extra detail helps us find the right solutions.</div>
-          <textarea id="anythingElse" name="anythingElse" rows="3" placeholder="Anything else on your mind..."></textarea>
+          <textarea id="anythingElse" name="anythingElse" rows="3"
+            placeholder="Anything else on your mind..."></textarea>
         </div>
 
         <div class="nav-buttons">
@@ -895,10 +1098,14 @@
       <!-- ════════════ Success ════════════ -->
       <div class="success-screen" id="successScreen">
         <div class="success-icon">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4A9B7F" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
         </div>
         <h2>Thank you!</h2>
-        <p>Your responses have been recorded. The SyntheLIQ team will review your input and follow up with tailored automation recommendations for your role at Prodesign.</p>
+        <p>Your responses have been recorded. The SyntheLIQ team will review your input and follow up with tailored
+          automation recommendations for your role at Prodesign.</p>
       </div>
 
     </div>
@@ -906,7 +1113,8 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <p>Powered by <strong>Synthe<span style="color:var(--cyan)">LIQ</span></strong> &middot; Workflow Discovery for Prodesign &middot; <a href="https://syntheliq.com" target="_blank" rel="noopener">syntheliq.com</a></p>
+    <p>Powered by <strong>Synthe<span style="color:var(--primary)">LIQ</span></strong> &middot; Workflow Discovery for
+      Prodesign &middot; <a href="https://syntheliq.com" target="_blank" rel="noopener">syntheliq.com</a></p>
   </footer>
 
   <script>
@@ -982,7 +1190,7 @@
     }
 
     // ── Form submission ──
-    document.getElementById('questForm').addEventListener('submit', async function(e) {
+    document.getElementById('questForm').addEventListener('submit', async function (e) {
       e.preventDefault();
 
       const submitBtn = this.querySelector('.btn-submit');
@@ -1056,4 +1264,5 @@
     updateProgress();
   </script>
 </body>
+
 </html>
